@@ -9,8 +9,11 @@ public class ClientBase {
 
     ArrayList<Client> clientList;
 
-    public ClientBase(ArrayList<Client> clientList) {
-        this.clientList = clientList;
+    public ClientBase() {
+        this.clientList = new ArrayList<>();
+    }
+
+    public ClientBase(ArrayList<Client> objects) {
     }
 
     public void addClient(int ID, float accountBalance) {
@@ -33,5 +36,9 @@ public class ClientBase {
 
     public boolean checkValidBalance(float amount) {
         return !(amount < 0);
+    }
+
+    public void purgeList() {
+        clientList.clear();
     }
 }

@@ -17,6 +17,7 @@ public class Service {
         Client client = clientBase.checkClientExists(ID);
         if (client != null) {
             float currentBalance = client.getAccountBalance() - amount;
+            client.setAccountBalance(currentBalance);
         }
         return null;
 
@@ -25,17 +26,17 @@ public class Service {
     public Client transferToClient(int ID, float amount) {
         Client client = clientBase.checkClientExists(ID);
         if (client != null) {
-            float currentBalance = client.getAccountBalance();
-            client.setAccountBalance(currentBalance + amount);
+            float currentBalance = client.getAccountBalance() + amount;
+            client.setAccountBalance(currentBalance);
         }
         return client;
     }
 
 
-    public String clientInfo(int ID) {
+    public Client clientInfo(int ID) {
         Client client = clientBase.checkClientExists(ID);
         if (client != null) {
-            return "Client id is: " + client.getID() + "\nClient accout balance: " + client.getAccountBalance();
+            return client;
         }
         return null;
     }
